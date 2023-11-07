@@ -144,6 +144,9 @@ These variables were log transformed for normalization as their formulas were de
 ![occupancy rate](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/4181c90fad5888de6ef5d635af82f61ee2681218/Graphs%20%26%20Images/EDA%20-%20occupancy%20rate%20frequency.png)
    - still experiencing slight skewness and kurtosis which can be attributed to the skewed distribution of _minimum_nights_avg_ntm_ in its formula.
 
+[![](https://img.shields.io/badge/back%20to%20top-%E2%86%A9-blue)](#-table-of-contents)
+<br><br>
+
 ## 📈 Dimensionality Reduction
 ### 🪓 Pearson Correlation Analysis
 
@@ -164,7 +167,60 @@ All non-numerical variables (to prevent abnormal results) were rejected includin
 ![pca interpretation](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/4181c90fad5888de6ef5d635af82f61ee2681218/Graphs%20%26%20Images/PCA%20interpretation.png)
 
 ### 🪓 Cluster Analysis
+Standardized and range clusters were formed using Average, Centroid and Ward measurement methods to test for best application. 90% sampling was done to test stability and it produced the same number of clusters on the full and sampled data. 
+   - Clustering analysis focused on listings with similar traits, using new principal component variables and applying range and standardization techniques to prevent abnormal distributions.
+   - Clusters with less than 1000 observations were disregarded to ensure meaningful results, leading to the rejection of initial clusters with large frequency spreads.
+   - Despite challenges with standardized clusters, stable results were obtained by specifying two clusters using range measurements, particularly with the Ward method, which demonstrated consistency through sampling.
+   - The analysis and interpretation of the stable clusters were guided by relevant tables and knowledge of the sharing economy, providing insights into the characteristics of the identified clusters.
 
+![cluster](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/d2ae29c02ef2bb7c797e7c444759b2262bbefb25/Graphs%20%26%20Images/Cluster%20segmentation.png)
+   - Two clusters formed, each indicating the presence or absence of illegality. 
 
+[![](https://img.shields.io/badge/back%20to%20top-%E2%86%A9-blue)](#-table-of-contents)
+<br><br>
 
+## 🔨 Model Implementation
+### 🪓 Data Preparation
 
+![target](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/d2ae29c02ef2bb7c797e7c444759b2262bbefb25/Graphs%20%26%20Images/Model%20target%20definition.png)
+   - Target signifies illegal listings
+   - The meta data node was used to set the target as a binary variable (1= true, 0 = false). 
+
+![partition](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/d2ae29c02ef2bb7c797e7c444759b2262bbefb25/Graphs%20%26%20Images/Model%20data%20partition.PNG)
+   - The dataset was split into 40% train, 30% validation, and 30% test.
+
+### 🧪 Decision Tree
+Maximum depth = 6
+
+![fit](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/d2ae29c02ef2bb7c797e7c444759b2262bbefb25/Graphs%20%26%20Images/Fit%20statistics.PNG)
+   - 96%, 93% and 92% accuracy respectively.
+
+![pred observations](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/d2ae29c02ef2bb7c797e7c444759b2262bbefb25/Graphs%20%26%20Images/Predicted%20observations%20extract.png)
+   - Snapshot of predictions
+
+![cumulative](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/d2ae29c02ef2bb7c797e7c444759b2262bbefb25/Graphs%20%26%20Images/Cumulative%20Lift.png)
+
+**Variable Importance**: PC2, PC1 and PC3 were the most predictive in model training and had importance values of 0.79 – 1.00
+
+![matrix](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/d2ae29c02ef2bb7c797e7c444759b2262bbefb25/Graphs%20%26%20Images/Classification%20Matrix.png)
+   - 91% precision, 94% recall
+
+**Model comparison:**
+
+![comparison table](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/d2ae29c02ef2bb7c797e7c444759b2262bbefb25/Graphs%20%26%20Images/model%20comparison%20table.png)
+
+![comparison](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/d2ae29c02ef2bb7c797e7c444759b2262bbefb25/Graphs%20%26%20Images/Model%20comparison.png)
+
+_**Q1: Are listings with high occupancy rate likely to be illegal?**_ The below histogram shows that occupancy rate is not a strong determinant of illegality as listings with low occupancy can either be legal or illegal depending on other factors. 
+
+![occupancy legality](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/d2ae29c02ef2bb7c797e7c444759b2262bbefb25/Graphs%20%26%20Images/Occupancy%20rate%20likelihood%20of%20illegality.png)
+
+_**Q2: Are certain property types more or less likely to be illegal?**_ The distribution below shows that any type of properties can be used for illegal rentals. Though a slight distinction can be noticed for ‘entire homes’ showing that they are more likely to be illegal but this is not a definitive factor given that the probability starts from 60%.  
+
+![property legality](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/d2ae29c02ef2bb7c797e7c444759b2262bbefb25/Graphs%20%26%20Images/property%20type%20likelihood%20of%20illegality.png)
+
+_**Q3: Are verified hosts more or less likely to engage in illegal activity?**_ Similar to the above different hosts can be involved in illegal activity. 
+
+![host legality](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/d2ae29c02ef2bb7c797e7c444759b2262bbefb25/Graphs%20%26%20Images/verified%20hosts%20likelihood%20of%20illegality.png)
+
+The above plots show that a singular variable cannot exhibit traits for illegality as it is influenced by a combination of a series of actions carried out by hosts, which then create a pattern. 
