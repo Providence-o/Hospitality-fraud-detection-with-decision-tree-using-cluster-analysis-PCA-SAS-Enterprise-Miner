@@ -252,5 +252,6 @@ Despite this, some hosts may be able to avoid detection by creating multiple gue
    - An, J. (2023) Airbnb calculator: Host profit estimator: Airbtics: Airbnb analytics, Airbtics.
    - Edinburgh.gov.uk (2023) Licences and permits applications, The City of Edinburgh Council.
 
-
+## Connect with me!
+- [LinkedIn](https://www.linkedin.com/in/providenceonyenekwe/)
 
