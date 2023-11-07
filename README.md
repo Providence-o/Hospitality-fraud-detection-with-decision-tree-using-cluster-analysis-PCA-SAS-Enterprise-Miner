@@ -224,3 +224,27 @@ _**Q3: Are verified hosts more or less likely to engage in illegal activity?**_ 
 ![host legality](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/d2ae29c02ef2bb7c797e7c444759b2262bbefb25/Graphs%20%26%20Images/verified%20hosts%20likelihood%20of%20illegality.png)
 
 The above plots show that a singular variable cannot exhibit traits for illegality as it is influenced by a combination of a series of actions carried out by hosts, which then create a pattern. 
+
+## 📏 Analysis
+**Implication of predictive model to Airbnb**
+The number of false positives and negatives on the training and validation set is low. The lower the false negative, the better or else it would defeat the business case/data mining goal. 
+
+Based on the validation data: 
+
+   - _3% false negative = 68 illegal listings falsely classified as legal_
+   - _4% false positive = 102 legal listings falsely classified as illegal_
+
+**Recommendation for mandatory licensing on the platform**
+Edinburgh laws introduced a license for short-term rentals. However, from analysis of the data, only 0.2% of listings had obtained and declared their license on the platform, though the law is meant to be fully enforced by July 2024 (Edinburgh.gov.uk, 2023). After this date, if Airbnb makes it mandatory to obtain this license for operation, in addition to an activity detection tool (like this classification model) on their website, it is very likely that the illegal listings (including the false negatives) will cease to exist in Edinburgh. This is because hotels/commercial properties do not qualify for the short-term license. Hence, they would be unable to prove to Airbnb that they are short-term rental hosts. 
+Meanwhile, the false negative and false positive listings with a license may be subjected to in-depth manual individual evaluation (if Airbnb has the labour) to prove their validity. Alternatively, these listings each make up 3 and 4% of the population, so the business may decide to disregard them. Meaning that false positive hosts may lose their source of income and impact Airbnb financially, while false negative hosts will continue to operate. Therefore, the impact on the rental market will greatly be reduced to only ≈ 3%. 
+Despite this, some hosts may be able to avoid detection by creating multiple guest accounts and illegally renting their property.
+
+![business model](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/3a4fbba10cd7f8478bc0ac05ba875cc7b9f6d2cf/Graphs%20%26%20Images/New%20business%20model%20proposition.png)
+
+## 📏 References
+   - Airbnb (2023) How do I read my performance data for occupancy and rates? - airbnb help centre, Airbnb. 
+   - An, J. (2023) Airbnb calculator: Host profit estimator: Airbtics: Airbnb analytics, Airbtics.
+   - Edinburgh.gov.uk (2023) Licences and permits applications, The City of Edinburgh Council.
+
+
+
