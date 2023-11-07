@@ -76,11 +76,9 @@ Airbnb does not release data on its listings however, InsideAirbnb scrapes publi
 ### 1️⃣ Cleaning the raw data set- dropping variables & observations
 Data cleaning was done following defined criteria in Microsoft Excel using filters. There were 7,387 observations with 25 columns post cleaning.
 
-**Cleaning criteria:**
-
 ![Cleaning](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/8e67416bb309b5497b950b3286791a5c06f21354/Graphs%20%26%20Images/Cleaning%20criteria.png)
-   - Numerical variables *accommodates* and *price* have a minimum of 0. It is highly unlikely           that a listing on Airbnb would be free and accommodate no-one, so this was regarded             as poor data. Therefore, the two corresponding listings were dropped.
-   - *reviews_per_month* and *review_score_rating*  had a large number of missing variables,             this was permissible because not every guest leaves reviews. 
+   - Numerical variables *accommodates* and *price* have a minimum of 0. It is highly unlikely that a listing on Airbnb would be free and accommodate no-one, so this was regarded as poor data. Therefore, the two corresponding listings were dropped.
+   - *reviews_per_month* and *review_score_rating*  had a large number of missing variables, this was permissible because not every guest leaves reviews. 
 
 **Resulting Summary statistics of Interval and Class Variables for analysis:**
 
@@ -125,3 +123,48 @@ These variables were log transformed for normalization as their formulas were de
 <br><br>
 
 ## 📈 EDA
+**Price Frequency**
+
+![price](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/4181c90fad5888de6ef5d635af82f61ee2681218/Graphs%20%26%20Images/EDA%20-%20price%20frequency.png)
+
+**Property Type Frequency**
+
+![property](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/4181c90fad5888de6ef5d635af82f61ee2681218/Graphs%20%26%20Images/EDA%20-%20property%20type%20frequency.png)
+
+**Neighbourhood Location**
+
+![neighbourhood](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/4181c90fad5888de6ef5d635af82f61ee2681218/Graphs%20%26%20Images/EDA%20-%20neighbourhood%20location.png)
+
+**Listing income frequency**
+
+![listing income](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/4181c90fad5888de6ef5d635af82f61ee2681218/Graphs%20%26%20Images/EDA%20-%20listing%20income%20frequency.png)
+
+**Occupancy rate frequency**
+
+![occupancy rate](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/4181c90fad5888de6ef5d635af82f61ee2681218/Graphs%20%26%20Images/EDA%20-%20occupancy%20rate%20frequency.png)
+   - still experiencing slight skewness and kurtosis which can be attributed to the skewed distribution of _minimum_nights_avg_ntm_ in its formula.
+
+## 📈 Dimensionality Reduction
+### 🪓 Pearson Correlation Analysis
+
+![pearsons](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/4181c90fad5888de6ef5d635af82f61ee2681218/Graphs%20%26%20Images/Pearsons%20correlation%20analysis.png)
+   - strong positive correlation between _bedrooms_ and _accommodates_. Indicating that they are very similar variables.
+   - _bedrooms_ dropped to prevent model overfitting.
+     
+### 🪓 Principal Component Analysis
+All non-numerical variables (to prevent abnormal results) were rejected including _bedrooms_ (based on the correlation results). 
+
+![pca](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/4181c90fad5888de6ef5d635af82f61ee2681218/Graphs%20%26%20Images/PCA%20-%20variable%20selection.PNG)
+
+![eigen](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/4181c90fad5888de6ef5d635af82f61ee2681218/Graphs%20%26%20Images/PCA%20-%20eigenvalue.png)
+   - 69% similarity between the original 13 variables and the new 6 principal components. This similarity is accepted being that the goal is variable reduction and not similarity or correlation
+
+![pca graph](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/4181c90fad5888de6ef5d635af82f61ee2681218/Graphs%20%26%20Images/PCA-%20graphs.PNG)
+
+![pca interpretation](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/4181c90fad5888de6ef5d635af82f61ee2681218/Graphs%20%26%20Images/PCA%20interpretation.png)
+
+### 🪓 Cluster Analysis
+
+
+
+
