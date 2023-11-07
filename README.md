@@ -225,7 +225,10 @@ _**Q3: Are verified hosts more or less likely to engage in illegal activity?**_ 
 
 The above plots show that a singular variable cannot exhibit traits for illegality as it is influenced by a combination of a series of actions carried out by hosts, which then create a pattern. 
 
-## 📏 Analysis
+[![](https://img.shields.io/badge/back%20to%20top-%E2%86%A9-blue)](#-table-of-contents)
+<br><br>
+
+## 👨‍💻 Analysis
 **Implication of predictive model to Airbnb**
 The number of false positives and negatives on the training and validation set is low. The lower the false negative, the better or else it would defeat the business case/data mining goal. 
 
@@ -240,6 +243,9 @@ Meanwhile, the false negative and false positive listings with a license may be 
 Despite this, some hosts may be able to avoid detection by creating multiple guest accounts and illegally renting their property.
 
 ![business model](https://github.com/Providence-o/Hospitality-fraud-detection-with-decision-tree-using-clustering-analysis-PCA-SAS-Enterprise-Miner/blob/3a4fbba10cd7f8478bc0ac05ba875cc7b9f6d2cf/Graphs%20%26%20Images/New%20business%20model%20proposition.png)
+
+[![](https://img.shields.io/badge/back%20to%20top-%E2%86%A9-blue)](#-table-of-contents)
+<br><br>
 
 ## 📏 References
    - Airbnb (2023) How do I read my performance data for occupancy and rates? - airbnb help centre, Airbnb. 
